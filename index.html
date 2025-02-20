@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticketing Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        #name {
+            border: 3px solid gray;
+            text-align: center;
+            font-size: 30px;
+        }
+        label, p {
+            font-weight: bold;
+            color: white;
+            font-family: Tahoma;
+        }
+        .row {
+            display: flex;
+        }
+        #ticket {
+            width: 800px;
+            height: 400px;
+        }
+        button {
+            font-family: Tahoma;
+        }
+        body {
+            background-image: url('pal_bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        hr {
+            color: white;
+        }
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #202c5c;
+            padding: 20px;
+            border-radius: 15px;
+            width: 50%;
+            margin: auto;
+        }
+        #gfonts {
+          font-family: 'Audiowide', sans-serif;
+          color: #FFFFFF;
+        }
+        #gfontsblack {
+          font-family: 'Audiowide', sans-serif;
+          color: #000000;
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Caveat:wght@400..700&family=Fondamento:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #202c5c;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="pal_logo_nobg.png" alt="Logo" width="150" height="50">
+            </a>
+        </div>
+    </nav>
+    <br>
+    <center>
+        <div class="col-md-6" style="background-color: #202c5c; color: white; font-family: Rockwell;">
+            <h1 id="gfonts">Welcome to Philippine Airlines</h1>
+        </div>
+    </center>
+    <hr>
+    <div class="center-container">
+        <details>
+            <summary id="gfonts"><b>Personal Information</b></summary>
+            <form>
+                <label id="gfonts">Full Name</label>
+                <input type="text" id="name" class="form-control" required>
+                <br>
+                <label id="gfonts">Email</label>
+                <input type="email" id="email" class="form-control" required>
+                <br>
+                <button id="gfonts" type="button" class="btn btn-danger" onclick="info()">SUBMIT INFO</button>
+            </form>
+        </details>
+        <br>
+        <details>
+            <summary id="gfonts"><b>Ticket Price</b></summary>
+            <form>
+                <label id="gfonts">Choose your seat:</label>
+                <select class="form-select" id="seat">
+                    <option id="gfontsblack" value="none">Select</option>
+                    <option id="gfontsblack" value="4000">Business</option>
+                    <option id="gfontsblack" value="2000">Premium Economy</option>
+                    <option id="gfontsblack" value="1000">Economy</option>
+                </select>
+                <br>
+                <label id="gfonts">Choose an option</label>
+                <select class="form-select" id="discount">
+                    <option id="gfontsblack" value="none">Select</option>
+                    <option id="gfontsblack" value="0.2">Child/Infant</option>
+                    <option id="gfontsblack" value="0.2">Senior Citizen</option>
+                    <option id="gfontsblack" value="0.2">Person With Disability</option>
+                    <option id="gfontsblack" value="0">Adult</option>
+                </select>
+                <br>
+                <label id="gfonts">Choose your destination (Domestic):</label>
+                <select class="form-select" id="domestic" onchange="disableOther('domestic', 'international')">
+                    <option id="gfontsblack" value="none">Select</option>
+                    <option id="gfontsblack" value="1369">Manila [MNL] To Iloilo [ILO]</option>
+                    <option id="gfontsblack" value="1735">Manila [MNL] To Bacolod [BCD]</option>
+                    <option id="gfontsblack" value="2449">Manila [MNL] To Davao [DVO]</option>
+                    <option id="gfontsblack" value="1700">Manila [MNL] To Cebu [CEB]</option>
+                    <option id="gfontsblack" value="2465">Manila [MNL] To Boracay (Caticlan) [MPH]</option>
+                </select>
+                <br>
+                <label id="gfonts">Choose your destination (International):</label>
+                <select class="form-select" id="international" onchange="disableOther('international', 'domestic')">
+                    <option id="gfontsblack" value="none">Select</option>
+                    <option id="gfontsblack" value="8862">Manila [MNL] To Taipei [TPE]</option>
+                    <option id="gfontsblack" value="9441">Manila [MNL] To Hong Kong [HKG]</option>
+                    <option id="gfontsblack" value="11584">Manila [MNL] To Singapore [SIN]</option>
+                    <option id="gfontsblack" value="14249">Manila [MNL] To Seoul [ICN]</option>
+                    <option id="gfontsblack" value="18014">Manila [MNL] To Tokyo [NRT]</option>
+                    <option id="gfontsblack" value="42342">Manila [MNL] To Sydney [SYD]</option>
+                    <option id="gfontsblack" value="42863">Manila [MNL] To Auckland [AKL]</option>
+                    <option id="gfontsblack" value="45586">Manila [MNL] To San Francisco [SFO]</option>
+                    <option id="gfontsblack" value="48366">Manila [MNL] To Los Angeles [LAX]</option>
+                    <option id="gfontsblack" value="59140">Manila [MNL] To Vancouver [YVR]</option>
+                    <option id="gfontsblack" value="52826">Manila [MNL] To Honolulu [HNL]</option>
+                    <option id="gfontsblack" value="76517">Manila [MNL] To New York [JFK]</option>
+                    <option id="gfontsblack" value="81904">Manila [MNL] To Toronto [YYZ]</option>
+
+                </select>
+                <br><br>
+                <button type="button" class="btn btn-danger" onclick="check_discount()">TICKET PRICE</button>
+            </form>
+        </details>
+        <br>
+        <details>
+            <summary id="gfonts"><b>Print Ticket</b></summary>
+            <br>
+            <img src="pal_ticket.jpg" id="ticket">
+            <button type="button" class="btn btn-danger" onclick="print_ticket()">PRINT TICKET</button>
+        </details>
+    </div>
+    <hr>
+    <p>&copy; Alwit</p>
+    <br>
+    <script>
+        function info() {
+            var name = document.getElementById('name').value;
+            window.alert('Thanks ' + name + '! Proceed to the next section.');
+        }
+        function check_discount() {
+            var seat = document.getElementById('seat').value;
+            var disc = document.getElementById('discount').value;
+            var domestic = document.getElementById('domestic').value;
+            var international = document.getElementById('international').value;
+            var destination = (domestic !== "none") ? parseInt(domestic) : (international !== "none") ? parseInt(international) : 0;
+            if (seat === "none" || destination === 0) {
+                window.alert('Please select both a seat and a destination.');
+                return;
+            }
+            var base_price = parseInt(seat) + destination;
+            var final_rate = base_price - (disc * base_price);
+            window.alert('Your ticket price is ' + final_rate + '. Proceed to the next section.');
+        }
+        function disableOther(selectedId, otherId) {
+            document.getElementById(otherId).value = "none";
+        }
+        function print_ticket() {
+            window.alert('Check your email for your ticket. Thank you!');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
